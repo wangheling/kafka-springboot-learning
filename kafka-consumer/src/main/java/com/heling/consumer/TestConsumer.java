@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TestConsumer {
 
-    @KafkaListener(topics = {"testTopic"})
+    @KafkaListener(topics = {"myTopic"})
     public void onMessage(String message){
         System.out.println(message);
     }
