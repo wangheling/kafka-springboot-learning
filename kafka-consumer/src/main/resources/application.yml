@@ -4,13 +4,11 @@ spring:
   kafka:
     bootstrap-servers: 192.168.1.83:9092
     # 指定默认消费者group id --> 由于在kafka中，同一组中的consumer不会读取到同一个消息，依靠groud.id设置组名
-    consumer:
-      group-id: testGroup
-      # smallest和largest才有效，如果smallest重新0开始读取，如果是largest从logfile的offset读取。一般情况下我们都是设置smallest
-      auto-offset-reset: earliest
-      enable-auto-commit: true
-      #如果'enable.auto.commit'为true，则消费者偏移自动提交给Kafka的频率（以毫秒为单位），默认值为5000。
-#      auto-commit-interval: 100
-      # 指定消息key和消息体的编解码方式
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#    consumer:
+#      group-id: testGroup
+#      auto-offset-reset: earliest
+#      enable-auto-commit: true
+#      #如果'enable.auto.commit'为true，则消费者偏移自动提交给Kafka的频率（以毫秒为单位），默认值为5000。
+#      # 指定消息key和消息体的编解码方式
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
