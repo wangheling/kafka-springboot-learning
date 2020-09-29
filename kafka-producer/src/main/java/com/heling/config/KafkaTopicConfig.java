@@ -33,8 +33,14 @@ public class KafkaTopicConfig {
      * 创建 Topic
      */
     @Bean
-    public NewTopic topicInfo() {
+    public NewTopic myTopic() {
         // 创建topic，需要指定创建的topic的"名称"、"分区数"、"副本数量(副本数数目设置要小于Broker数量)"
         return new NewTopic("myTopic", 2, (short) 1);
+    }
+
+    @Bean
+    public NewTopic myTopic2() {
+        // 创建topic，需要指定创建的topic的"名称"、"分区数"、"副本数量(副本数数目设置要小于Broker数量)"
+        return new NewTopic("myTopic2", 2, (short) 1);
     }
 }
