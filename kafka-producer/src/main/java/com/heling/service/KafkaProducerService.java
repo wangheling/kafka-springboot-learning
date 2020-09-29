@@ -1,13 +1,14 @@
 package com.heling.service;
 
+import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 /**
@@ -29,7 +30,9 @@ public class KafkaProducerService {
      * @param message producer发送的数据
      */
     public void sendMessageSync(String topic, String message) throws InterruptedException, ExecutionException, TimeoutException {
-        kafkaTemplate.send(topic, message).get(10, TimeUnit.SECONDS);
+//        SendResult<String, String> sendResult = kafkaTemplate.send(topic, message).get(10, TimeUnit.SECONDS);
+        SendResult<String, String> sendResult = kafkaTemplate.send(topic, message).get();
+        log.info("同步发送消息结果：{}", JSONObject.toJSON(sendResult));
     }
 
     /**
@@ -48,7 +51,7 @@ public class KafkaProducerService {
 
             @Override
             public void onSuccess(Object o) {
-                log.info("send success");
+                log.info("send success:{}", JSONObject.toJSON(o));
 
             }
         });
