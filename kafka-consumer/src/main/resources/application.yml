@@ -1,5 +1,5 @@
 server:
-  port: -1
+  port: 2222
 spring:
   kafka:
     bootstrap-servers: 192.168.1.83:9092
