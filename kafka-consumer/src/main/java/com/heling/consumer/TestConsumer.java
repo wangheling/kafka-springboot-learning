@@ -13,7 +13,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class TestConsumer {
 
-    @KafkaListener(topics = {"myTopic"}, groupId = "defaultGroup", containerFactory = "kafkaListenerContainerFactory")
+    @KafkaListener(
+            topics = {"myTopic"},
+            groupId = "defaultGroup",
+            containerFactory = "kafkaListenerContainerFactory"// * 使用的 KafkaListenerContainerFactory Bean 的名字
+                                                              // * 若未设置，则使用默认的 KafkaListenerContainerFactory Bean
+    )
     public void onMessage(String message) {
         log.info("received message: {}", message);
 
