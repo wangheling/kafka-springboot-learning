@@ -38,7 +38,7 @@ public class KafkaConsumerConfig {
         // 拉取超时时间
         factory.getContainerProperties().setPollTimeout(3000);
         // 当使用批量监听器时需要设置为true
-        factory.setBatchListener(true);
+        factory.setBatchListener(false);
         return factory;
     }
 

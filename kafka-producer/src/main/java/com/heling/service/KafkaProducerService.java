@@ -28,12 +28,12 @@ public class KafkaProducerService {
      * @param topic   topic名称
      * @param message producer发送的数据
      */
-    public void sendMessageSync(String topic, String message) throws InterruptedException, ExecutionException, TimeoutException {
-//        SendResult<String, String> sendResult = kafkaTemplate.send(topic, message).get(10, TimeUnit.SECONDS);
-        kafkaTemplate.send(topic, message).get();
+    public void sendMessageSync(String topic, Object message) throws InterruptedException, ExecutionException, TimeoutException {
+//        SendResult<String, String> sendResult = kafkaTemplate.send(topic, JSONObject.toJSONString(message)).get(10, TimeUnit.SECONDS);
+        kafkaTemplate.send(topic, JSONObject.toJSONString(message)).get();
 
 
-//        ProducerRecord<String, String> msg = new ProducerRecord<>(topic, message);
+//        ProducerRecord<String, String> msg = new ProducerRecord<>(topic, JSONObject.toJSONString(message));
 //        SendResult<String, String> sendResult = kafkaTemplate.send(msg).get();
 //        log.info("同步发送消息结果：{}", JSONObject.toJSON(sendResult));
     }
@@ -44,9 +44,9 @@ public class KafkaProducerService {
      * @param topic   topic名称
      * @param message producer发送的数据
      */
-    public void sendMessageAsync(String topic, String message) {
+    public void sendMessageAsync(String topic, Object message) {
 
-        kafkaTemplate.send(topic, message).addCallback(new ListenableFutureCallback() {
+        kafkaTemplate.send(topic, JSONObject.toJSONString(message)).addCallback(new ListenableFutureCallback() {
             @Override
             public void onFailure(Throwable throwable) {
                 log.info("send failed", throwable.getMessage());
@@ -59,4 +59,5 @@ public class KafkaProducerService {
             }
         });
     }
+
 }

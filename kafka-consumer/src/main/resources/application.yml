@@ -3,12 +3,12 @@ server:
 spring:
   kafka:
     bootstrap-servers: 192.168.1.83:9092
-    # Ö¸¶¨Ä¬ÈÏÏû·ÑÕßgroup id --> ÓÉÓÚÔÚkafkaÖĞ£¬Í¬Ò»×éÖĞµÄconsumer²»»á¶ÁÈ¡µ½Í¬Ò»¸öÏûÏ¢£¬ÒÀ¿¿groud.idÉèÖÃ×éÃû
+#    æŒ‡å®šé»˜è®¤æ¶ˆè´¹è€…group id --> ç”±äºåœ¨kafkaä¸­ï¼ŒåŒä¸€ç»„ä¸­çš„consumerä¸ä¼šè¯»å–åˆ°åŒä¸€ä¸ªæ¶ˆæ¯ï¼Œä¾é groud.idè®¾ç½®ç»„å
 #    consumer:
 #      group-id: testGroup
 #      auto-offset-reset: earliest
 #      enable-auto-commit: true
-#      #Èç¹û'enable.auto.commit'Îªtrue£¬ÔòÏû·ÑÕßÆ«ÒÆ×Ô¶¯Ìá½»¸øKafkaµÄÆµÂÊ£¨ÒÔºÁÃëÎªµ¥Î»£©£¬Ä¬ÈÏÖµÎª5000¡£
-#      # Ö¸¶¨ÏûÏ¢keyºÍÏûÏ¢ÌåµÄ±à½âÂë·½Ê½
+#      #å¦‚æœ'enable.auto.commit'ä¸ºtrueï¼Œåˆ™æ¶ˆè´¹è€…åç§»è‡ªåŠ¨æäº¤ç»™Kafkaçš„é¢‘ç‡ï¼ˆä»¥æ¯«ç§’ä¸ºå•ä½ï¼‰ï¼Œé»˜è®¤å€¼ä¸º5000ã€‚
+#      # æŒ‡å®šæ¶ˆæ¯keyå’Œæ¶ˆæ¯ä½“çš„ç¼–è§£ç æ–¹å¼
 #      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 #      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer

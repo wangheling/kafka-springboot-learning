@@ -65,6 +65,7 @@ public class KafkaProducerConfig {
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         // 值的序列化方式
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+//        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, UserSerializer.class);
         // 压缩消息，支持四种类型，分别为：none、lz4、gzip、snappy，默认为none。
         // 消费者默认支持解压，所以压缩设置在生产者，消费者无需设置。
         props.put(ProducerConfig.COMPRESSION_TYPE_CONFIG, "none");
