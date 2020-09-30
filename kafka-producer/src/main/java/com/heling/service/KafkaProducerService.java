@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
@@ -31,8 +30,12 @@ public class KafkaProducerService {
      */
     public void sendMessageSync(String topic, String message) throws InterruptedException, ExecutionException, TimeoutException {
 //        SendResult<String, String> sendResult = kafkaTemplate.send(topic, message).get(10, TimeUnit.SECONDS);
-        SendResult<String, String> sendResult = kafkaTemplate.send(topic, message).get();
-        log.info("同步发送消息结果：{}", JSONObject.toJSON(sendResult));
+        kafkaTemplate.send(topic, message).get();
+
+
+//        ProducerRecord<String, String> msg = new ProducerRecord<>(topic, message);
+//        SendResult<String, String> sendResult = kafkaTemplate.send(msg).get();
+//        log.info("同步发送消息结果：{}", JSONObject.toJSON(sendResult));
     }
 
     /**
