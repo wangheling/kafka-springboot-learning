@@ -53,14 +53,14 @@ public class KafkaProducerConfig {
         props.put(ProducerConfig.ACKS_CONFIG, "1");
         // 生产者空间不足时，send()被阻塞的时间，默认60s
         props.put(ProducerConfig.MAX_BLOCK_MS_CONFIG, 6000);
-        // 控制批处理大小，单位为字节
-        props.put(ProducerConfig.BATCH_SIZE_CONFIG, 4096);
-        // 批量发送，延迟为1毫秒，启用该功能能有效减少生产者发送消息次数，从而提高并发量
-        props.put(ProducerConfig.LINGER_MS_CONFIG, 1);
-        // 生产者可以使用的总内存字节来缓冲等待发送到服务器的记录
-        props.put(ProducerConfig.BUFFER_MEMORY_CONFIG, 40960);
         // 消息的最大大小限制,也就是说send的消息大小不能超过这个限制, 默认1048576(1MB)
         props.put(ProducerConfig.MAX_REQUEST_SIZE_CONFIG, 1048576);
+        // 控制批处理大小，单位为字节
+        props.put(ProducerConfig.BATCH_SIZE_CONFIG, 4096);
+        // 单位毫秒，如果是批量发送，没有达到batch_size的值，那么在达到linger_ms时间后也会发送
+        props.put(ProducerConfig.LINGER_MS_CONFIG, 1000);
+        // 生产者可以使用的总内存字节来缓冲等待发送到服务器的记录
+        props.put(ProducerConfig.BUFFER_MEMORY_CONFIG, 40960);
         // 键的序列化方式
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         // 值的序列化方式
